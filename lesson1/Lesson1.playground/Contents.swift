@@ -27,5 +27,21 @@ struct OtherGirl: GoodGirlDetector {
     }
 }
 
-let myEx = MyExGirlfreind(name: "Ksenya", age: 24, isMarried: false)
-myEx.sawingBrains() //Если пилит мозги, то плохая девочка. Все мои бывшие пилили мозги.
+struct Suren {
+    //var someGirl: GoodGirlDetector
+    
+    func isGirlGood (girl: GoodGirlDetector) -> Bool {
+        if (girl.sawingBrains() == true) {
+            print("бывшая \(girl.name) не подходит, потому, что пилит мозги")
+            return false
+        }
+        print("\(girl.name) подходит, нужно пробовать")
+        return true
+    }
+}
+
+let myEx = MyExGirlfreind(name: "Ксения", age: 24, isMarried: false)
+let myNew = OtherGirl(name: "Виктория", age: 24, isMarried: false)
+let me = Suren()
+me.isGirlGood(girl: myEx)
+me.isGirlGood(girl: myNew)
