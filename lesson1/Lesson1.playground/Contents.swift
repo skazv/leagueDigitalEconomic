@@ -28,10 +28,9 @@ struct OtherGirl: GoodGirlDetector {
 }
 
 struct Suren {
-    //var someGirl: GoodGirlDetector
     
-    func isGirlGood (girl: GoodGirlDetector) -> Bool {
-        if (girl.sawingBrains() == true) {
+    func isGirlGood(girl: GoodGirlDetector) -> Bool {
+        if girl.sawingBrains() {
             print("бывшая \(girl.name) не подходит, потому, что пилит мозги")
             return false
         }
