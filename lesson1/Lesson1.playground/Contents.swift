@@ -40,7 +40,7 @@ struct Suren {
 }
 
 let myEx = MyExGirlfreind(name: "Ксения", age: 24, isMarried: false)
-let myNew = OtherGirl(name: "Виктория", age: 24, isMarried: false)
+let myNew = OtherGirl(name: "Виктория", age: 25, isMarried: false)
 let me = Suren()
-me.isGirlGood(girl: myEx)
-me.isGirlGood(girl: myNew)
+me.isGirlGood(girl: myEx) // бывшая Ксения не подходит, потому, что пилит мозги
+me.isGirlGood(girl: myNew) // Виктория подходит, нужно пробовать
