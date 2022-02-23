@@ -145,7 +145,7 @@ extension ViewController {
     
     enum RegExString: String {
         case name = "[A-Za-zА-ЯЁа-яё-]{2,}+\\s{1}+[A-Za-zА-ЯЁа-яё-]{2,}"
-        case email = "[a-z]{2,}+@[a-z]+\\.[a-z]{2,}"
+        case email = "[a-z-0-9]{2,}+@[a-z]+\\.[a-z]{2,}"
     }
     
     @objc
