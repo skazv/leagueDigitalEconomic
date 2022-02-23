@@ -1,4 +1,4 @@
 # leagueDigitalEconomic
-For studying in league Digital Economic
+Тут будут мои кринжовые коды, в которых будет упоминаться бывшая
 
-Тут будут мои кринжовые коды
+For studying in league Digital Economic
