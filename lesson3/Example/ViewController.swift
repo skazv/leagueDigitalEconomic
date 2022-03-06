@@ -8,6 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController {
+    var delegate: ((UILabel)->(Void))?
     
     private lazy var cardView: UIView = {
         let view = UIView()
@@ -36,7 +37,7 @@ class ViewController: UIViewController {
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 4
         button.tag = 1
-        button.addTarget(self, action: #selector(didTapValidateButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(didTapValidateButton(sender:)), for: .touchUpInside)
         return button
     }()
     
@@ -148,20 +149,28 @@ extension ViewController {
         case email = "[a-z-0-9]{2,}+@[a-z]+\\.[a-z]{2,}"
     }
     
+    struct Validation {
+        
+    }
+    
+    func some(label: UILabel) {
+        let predicate = NSPredicate(format: "SELF MATCHES[c] %@", RegExString.name.rawValue)
+        let isValid = predicate.evaluate(with: nameTextField.text)
+        validationResultLabel.text = isValid ? "Валидация прошла успешно" : "В поле ошибка"
+        validationResultLabel.textColor = isValid ? .systemGreen : .systemRed
+    }
+    
     @objc
     private func didTapValidateButton(sender: UIButton) {
-        
         switch sender.tag {
         case 1:
             let predicate = NSPredicate(format: "SELF MATCHES[c] %@", RegExString.name.rawValue)
             let isValid = predicate.evaluate(with: nameTextField.text)
-            
             validationResultLabel.text = isValid ? "Валидация прошла успешно" : "В поле ошибка"
             validationResultLabel.textColor = isValid ? .systemGreen : .systemRed
         case 2:
             let predicate = NSPredicate(format: "SELF MATCHES[c] %@", RegExString.email.rawValue)
             let isValid = predicate.evaluate(with: emailTextField.text)
-            
             emailValidationResultLabel.text = isValid ? "Валидация email прошла успешно" : "Ошибка (Тупишь как моя бывшая)"
             emailValidationResultLabel.textColor = isValid ? .systemGreen : .systemRed
         default: print("error")
@@ -169,3 +178,25 @@ extension ViewController {
         
     }
 }
+
+//
+//@objc
+//private func didTapValidateButton(sender: UIButton) {
+//
+//    switch sender.tag {
+//    case 1:
+//        let predicate = NSPredicate(format: "SELF MATCHES[c] %@", RegExString.name.rawValue)
+//        let isValid = predicate.evaluate(with: nameTextField.text)
+//
+//        validationResultLabel.text = isValid ? "Валидация прошла успешно" : "В поле ошибка"
+//        validationResultLabel.textColor = isValid ? .systemGreen : .systemRed
+//    case 2:
+//        let predicate = NSPredicate(format: "SELF MATCHES[c] %@", RegExString.email.rawValue)
+//        let isValid = predicate.evaluate(with: emailTextField.text)
+//
+//        emailValidationResultLabel.text = isValid ? "Валидация email прошла успешно" : "Ошибка (Тупишь как моя бывшая)"
+//        emailValidationResultLabel.textColor = isValid ? .systemGreen : .systemRed
+//    default: print("error")
+//    }
+//
+//}
