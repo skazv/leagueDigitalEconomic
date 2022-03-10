@@ -10,7 +10,7 @@ import UIKit
 
 class NameView: UIView {
     
-    private lazy var cardView: UIView = {
+    private lazy var nameCardView: UIView = {
         let view = UIView()
         view.backgroundColor = .secondarySystemBackground
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -61,25 +61,33 @@ class NameView: UIView {
 // MARK: - Private methods
 extension NameView: ValidationProtocol {
     private func configureView() {
-
-        self.addSubview(nameTextField)
-        self.addSubview(validateButton)
-        self.addSubview(validationResultLabel)
+        
+        self.backgroundColor = .systemBackground
+        
+        self.addSubview(nameCardView)
+        nameCardView.addSubview(nameTextField)
+        nameCardView.addSubview(validateButton)
+        nameCardView.addSubview(validationResultLabel)
         
         
         NSLayoutConstraint.activate([
-            nameTextField.topAnchor.constraint(equalTo: self.topAnchor, constant: 16),
-            nameTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-            nameTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+            
+            nameCardView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 250),
+            nameCardView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            nameCardView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+            
+            nameTextField.topAnchor.constraint(equalTo: nameCardView.topAnchor, constant: 16),
+            nameTextField.leadingAnchor.constraint(equalTo: nameCardView.leadingAnchor, constant: 16),
+            nameTextField.trailingAnchor.constraint(equalTo: nameCardView.trailingAnchor, constant: -16),
             
             validateButton.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 16),
-            validateButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-            validateButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+            validateButton.leadingAnchor.constraint(equalTo: nameCardView.leadingAnchor, constant: 16),
+            validateButton.trailingAnchor.constraint(equalTo: nameCardView.trailingAnchor, constant: -16),
             
             validationResultLabel.topAnchor.constraint(equalTo: validateButton.bottomAnchor, constant: 16),
-            validationResultLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-            validationResultLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
-            validationResultLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -16)
+            validationResultLabel.leadingAnchor.constraint(equalTo: nameCardView.leadingAnchor, constant: 16),
+            validationResultLabel.trailingAnchor.constraint(equalTo: nameCardView.trailingAnchor, constant: -16),
+            validationResultLabel.bottomAnchor.constraint(equalTo: nameCardView.bottomAnchor, constant: -16)
         ])
     }
     
@@ -90,6 +98,8 @@ extension NameView: ValidationProtocol {
     
     @objc
     private func didTapValidateButton() {
-        validation(label: validationResultLabel, field: nameTextField, regEx: RegExString.name.rawValue)
+        validation(label: validationResultLabel,
+                   field: nameTextField,
+                   regEx: RegExString.name.rawValue)
     }
 }

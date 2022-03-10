@@ -61,25 +61,32 @@ class EmailView: UIView {
 
 // MARK: - Private methods
 extension EmailView: ValidationProtocol {
-    private func configureView() {        
+    private func configureView() {
+        self.backgroundColor = .systemBackground
         
-        self.addSubview(emailTextField)
-        self.addSubview(emailValidationButton)
-        self.addSubview(emailValidationResultLabel)
+        self.addSubview(emailCardView)
+        emailCardView.addSubview(emailTextField)
+        emailCardView.addSubview(emailValidationButton)
+        emailCardView.addSubview(emailValidationResultLabel)
         
         NSLayoutConstraint.activate([
-            emailTextField.topAnchor.constraint(equalTo: self.topAnchor, constant: 16),
-            emailTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-            emailTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+            
+            emailCardView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 250),
+                       emailCardView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+                       emailCardView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+            
+            emailTextField.topAnchor.constraint(equalTo: emailCardView.topAnchor, constant: 16),
+            emailTextField.leadingAnchor.constraint(equalTo: emailCardView.leadingAnchor, constant: 16),
+            emailTextField.trailingAnchor.constraint(equalTo: emailCardView.trailingAnchor, constant: -16),
             
             emailValidationButton.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 16),
-            emailValidationButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-            emailValidationButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+            emailValidationButton.leadingAnchor.constraint(equalTo: emailCardView.leadingAnchor, constant: 16),
+            emailValidationButton.trailingAnchor.constraint(equalTo: emailCardView.trailingAnchor, constant: -16),
             
             emailValidationResultLabel.topAnchor.constraint(equalTo: emailValidationButton.bottomAnchor, constant: 16),
-            emailValidationResultLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-            emailValidationResultLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
-            emailValidationResultLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -16)
+            emailValidationResultLabel.leadingAnchor.constraint(equalTo: emailCardView.leadingAnchor, constant: 16),
+            emailValidationResultLabel.trailingAnchor.constraint(equalTo: emailCardView.trailingAnchor, constant: -16),
+            emailValidationResultLabel.bottomAnchor.constraint(equalTo: emailCardView.bottomAnchor, constant: -16)
         ])
     }
     
@@ -90,6 +97,8 @@ extension EmailView: ValidationProtocol {
     
     @objc
     private func didTapValidateButton() {
-        validation(label: emailValidationResultLabel, field: emailTextField, regEx: RegExString.email.rawValue)
+        validation(label: emailValidationResultLabel,
+                   field: emailTextField,
+                   regEx: RegExString.email.rawValue)
     }
 }
