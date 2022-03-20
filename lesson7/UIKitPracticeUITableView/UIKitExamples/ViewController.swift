@@ -29,7 +29,7 @@ class ViewController: UIViewController {
         tv.translatesAutoresizingMaskIntoConstraints = false
         tv.delegate = self
         tv.dataSource = self
-        tv.estimatedRowHeight = 50
+        tv.estimatedRowHeight = 1000
         tv.rowHeight = UITableView.automaticDimension
         tv.register(CustomCell.self, forCellReuseIdentifier: customCellId)
         return tv
@@ -68,7 +68,8 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         topView.titleLabel.text = Genre[section]
         
         topView.callback = { [weak self] in
-            for row in self!.models[section].cells.indices {
+            guard let safeModel =  self?.models[section] else { return }
+            for row in safeModel.cells.indices {
                 let indexPath = IndexPath(row: row, section: section)
                 indexPaths.append(indexPath)
             }
