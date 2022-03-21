@@ -26,7 +26,6 @@ class CustomCell: UITableViewCell {
         label.layer.borderColor = UIColor.lightGray.cgColor
         label.layer.borderWidth = 1
         label.layer.cornerRadius = 10
-        
         label.font = UIFont.systemFont(ofSize: 13)
         return label
     }()
