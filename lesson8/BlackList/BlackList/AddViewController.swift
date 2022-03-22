@@ -11,50 +11,62 @@ class AddViewController: UIViewController {
     
     var callback: ((String, Int)->(Void))?
     
-    lazy var addView: UIView = {
+    private lazy var addView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .systemCyan
+        view.backgroundColor = .systemOrange
+        view.layer.cornerRadius = 12
         return view
     }()
     
-    lazy var pickerView: UIPickerView = {
+    private lazy var headerLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .boldSystemFont(ofSize: 20)
+        label.text = "Add enemy"
+        label.textAlignment = .center
+        return label
+    }()
+    
+    private lazy var pickerView: UIPickerView = {
         let picker = UIPickerView()
         picker.translatesAutoresizingMaskIntoConstraints = false
         picker.delegate = self
         picker.dataSource = self
         picker.backgroundColor = .systemBackground
+        picker.layer.cornerRadius = 12
         return picker
     }()
     
-    lazy var nameField: UITextField = {
+    private lazy var nameField: UITextField = {
         let tf = UITextField()
         tf.translatesAutoresizingMaskIntoConstraints = false
         tf.backgroundColor = .white
-        tf.placeholder = "Введите имя..."
+        tf.layer.cornerRadius = 12
+        tf.placeholder = " Введите имя..."
         return tf
     }()
     
-    lazy var addButton: UIButton = {
+    private lazy var addButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(insertTapped), for: .touchUpInside)
-        button.setTitle("Добавить", for: .normal)
+        button.setTitle("  Добавить  ", for: .normal)
         button.layer.cornerRadius = 12
-        button.backgroundColor = .systemOrange
+        button.backgroundColor = .white
         button.setTitleColor(.black, for: .normal)
         return button
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .init(white: 0, alpha: 0)
         setup()
     }
     
     @objc func insertTapped() {
         callback?(nameField.text!, pickerView.selectedRow(inComponent: 0))
-        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: .none)
     }
     
 }
@@ -63,25 +75,31 @@ class AddViewController: UIViewController {
 extension AddViewController {
     private func setup() {
         view.addSubview(addView)
+        addView.addSubview(headerLabel)
         addView.addSubview(pickerView)
         addView.addSubview(nameField)
         addView.addSubview(addButton)
         
         NSLayoutConstraint.activate([
-            addView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            addView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            addView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            addView.heightAnchor.constraint(equalToConstant: 400),
             
-            pickerView.topAnchor.constraint(equalTo: addView.topAnchor, constant: 30),
+            addView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            addView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -150),
+            
+            headerLabel.topAnchor.constraint(equalTo: addView.topAnchor, constant: 20),
+            headerLabel.leadingAnchor.constraint(equalTo: addView.leadingAnchor, constant: 16),
+            headerLabel.trailingAnchor.constraint(equalTo: addView.trailingAnchor, constant: -16),
+            
+            pickerView.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 30),
             pickerView.leadingAnchor.constraint(equalTo: addView.leadingAnchor, constant: 16),
             pickerView.trailingAnchor.constraint(equalTo: addView.trailingAnchor, constant: -16),
             pickerView.bottomAnchor.constraint(equalTo: nameField.topAnchor, constant: -20),
+            pickerView.heightAnchor.constraint(equalToConstant: 100),
             
             nameField.topAnchor.constraint(equalTo: pickerView.bottomAnchor, constant: 20),
             nameField.leadingAnchor.constraint(equalTo: addView.leadingAnchor, constant: 16),
             nameField.trailingAnchor.constraint(equalTo: addView.trailingAnchor, constant: -16),
             nameField.bottomAnchor.constraint(equalTo: addButton.topAnchor, constant: -30),
+            nameField.heightAnchor.constraint(equalToConstant: 40),
             
             addButton.bottomAnchor.constraint(equalTo: addView.bottomAnchor, constant: -30),
             addButton.centerXAnchor.constraint(equalTo: addView.centerXAnchor),

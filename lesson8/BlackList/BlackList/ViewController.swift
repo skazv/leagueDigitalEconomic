@@ -54,7 +54,7 @@ class ViewController: UIViewController {
             self?.array[selectedRow].insert(name, at: 0)
             self?.tableView.insertRows(at: [IndexPath(row: 0, section: selectedRow)], with: .top)
         }
-        navigationController?.pushViewController(addViewController, animated: true)
+        navigationController?.present(addViewController, animated: true, completion: .none)
     }
 
 
