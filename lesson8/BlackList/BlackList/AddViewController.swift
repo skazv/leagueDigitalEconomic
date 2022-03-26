@@ -116,10 +116,10 @@ extension AddViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         var str = ""
         switch row {
-        case 0: str = "Бывшие"
-        case 1: str = "Должники"
-        case 2: str = "Не любят Miyagi"
-        case 3: str = "Не пришласившие на ДР"
+        case 0: str = HeaderNames.exGirls.rawValue
+        case 1: str = HeaderNames.debtors.rawValue
+        case 2: str = HeaderNames.miyagiHaters.rawValue
+        case 3: str = HeaderNames.bithday.rawValue
         default: print("ERROR")
         }
         return str

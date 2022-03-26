@@ -7,23 +7,9 @@
 
 import UIKit
 
-struct BlackList {
-    subscript(index: Int) -> String {
-        switch index {
-        case 0: return "Бывшие"
-        case 1: return "Должники"
-        case 2: return "Не любят Miyagi"
-        case 3: return "Не пришласившие на ДР"
-        default:
-            print("ERROR")
-            return "ERROR"
-        }
-    }
-}
-
 class ViewController: UIViewController {
     
-    var array = [["Катя", "Таня", "Вика", "Эля"], ["Света", "Настя", "Элвира"], ["Жанна", "Боня", "Саша"], ["Кристина", "Тая", "Сая"]]
+    var exGfNames = [["Катя", "Таня", "Вика", "Эля"], ["Света", "Настя", "Элвира"], ["Жанна", "Боня", "Саша"], ["Кристина", "Тая", "Сая"]]
     let addViewController = AddViewController()
     
     lazy var tableView: UITableView = {
@@ -38,7 +24,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Black List"
+        title = "Black List"
         let editButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editTapped))
         navigationItem.rightBarButtonItem = editButton
         navigationItem.leftBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
@@ -51,7 +37,7 @@ class ViewController: UIViewController {
     
     @objc func addTapped() {
         addViewController.callback = { [weak self] name, selectedRow in
-            self?.array[selectedRow].insert(name, at: 0)
+            self?.exGfNames[selectedRow].insert(name, at: 0)
             self?.tableView.insertRows(at: [IndexPath(row: 0, section: selectedRow)], with: .top)
         }
         navigationController?.present(addViewController, animated: true, completion: .none)
@@ -60,17 +46,17 @@ class ViewController: UIViewController {
 
 }
 
-//MARK: - Protocols
-extension ViewController: UITableViewDelegate, UITableViewDataSource {
+//MARK: - UITableViewDataSource
+extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         cell.backgroundColor = .systemBrown
-        cell.textLabel?.text = array[indexPath.section][indexPath.row]
+        cell.textLabel?.text = exGfNames[indexPath.section][indexPath.row]
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        array[section].count
+        exGfNames[section].count
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -78,7 +64,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return array.count
+        return exGfNames.count
     }
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
@@ -87,7 +73,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            array[indexPath.section].remove(at: indexPath.row)
+            exGfNames[indexPath.section].remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .left)
         }
     }
@@ -97,11 +83,15 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let item = array[sourceIndexPath.section][sourceIndexPath.row]
-        array[sourceIndexPath.section].remove(at: sourceIndexPath.row)
-        array[destinationIndexPath.section].insert(item, at: destinationIndexPath.row)
+        let item = exGfNames[sourceIndexPath.section][sourceIndexPath.row]
+        exGfNames[sourceIndexPath.section].remove(at: sourceIndexPath.row)
+        exGfNames[destinationIndexPath.section].insert(item, at: destinationIndexPath.row)
     }
     
+}
+
+//MARK: - UITableViewDelegate
+extension ViewController: UITableViewDelegate {
 }
 
 //MARK: - Private methods

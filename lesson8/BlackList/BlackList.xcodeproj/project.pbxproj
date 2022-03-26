@@ -9,21 +9,23 @@
 /* Begin PBXBuildFile section */
 		8E69A23827E7D1C3006803A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E69A23727E7D1C3006803A5 /* AppDelegate.swift */; };
 		8E69A23A27E7D1C3006803A5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E69A23927E7D1C3006803A5 /* SceneDelegate.swift */; };
-		8E69A23C27E7D1C3006803A5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E69A23B27E7D1C3006803A5 /* ViewController.swift */; };
+		8E69A23C27E7D1C3006803A5 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E69A23B27E7D1C3006803A5 /* MainController.swift */; };
 		8E69A24127E7D1C5006803A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E69A24027E7D1C5006803A5 /* Assets.xcassets */; };
 		8E69A24427E7D1C5006803A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E69A24227E7D1C5006803A5 /* LaunchScreen.storyboard */; };
 		8E69A24E27E7EB4D006803A5 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E69A24D27E7EB4D006803A5 /* AddViewController.swift */; };
+		8E9D509227EEF419008180A2 /* BlackListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9D509127EEF419008180A2 /* BlackListModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8E69A23427E7D1C3006803A5 /* BlackList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlackList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E69A23727E7D1C3006803A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E69A23927E7D1C3006803A5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8E69A23B27E7D1C3006803A5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8E69A23B27E7D1C3006803A5 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		8E69A24027E7D1C5006803A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8E69A24327E7D1C5006803A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8E69A24527E7D1C5006803A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E69A24D27E7EB4D006803A5 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
+		8E9D509127EEF419008180A2 /* BlackListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackListModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,8 +60,9 @@
 			children = (
 				8E69A23727E7D1C3006803A5 /* AppDelegate.swift */,
 				8E69A23927E7D1C3006803A5 /* SceneDelegate.swift */,
-				8E69A23B27E7D1C3006803A5 /* ViewController.swift */,
+				8E69A23B27E7D1C3006803A5 /* MainController.swift */,
 				8E69A24D27E7EB4D006803A5 /* AddViewController.swift */,
+				8E9D509127EEF419008180A2 /* BlackListModel.swift */,
 				8E69A24027E7D1C5006803A5 /* Assets.xcassets */,
 				8E69A24227E7D1C5006803A5 /* LaunchScreen.storyboard */,
 				8E69A24527E7D1C5006803A5 /* Info.plist */,
@@ -138,8 +141,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E69A24E27E7EB4D006803A5 /* AddViewController.swift in Sources */,
-				8E69A23C27E7D1C3006803A5 /* ViewController.swift in Sources */,
+				8E69A23C27E7D1C3006803A5 /* MainController.swift in Sources */,
 				8E69A23827E7D1C3006803A5 /* AppDelegate.swift in Sources */,
+				8E9D509227EEF419008180A2 /* BlackListModel.swift in Sources */,
 				8E69A23A27E7D1C3006803A5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
