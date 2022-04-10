@@ -18,7 +18,6 @@ class ViewController: UITabBarController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-       // fetchAllCategories()
     }
 
 
@@ -29,16 +28,11 @@ extension ViewController {
     private func setup() {
         view.backgroundColor = .secondarySystemBackground
         let vcBlackList = UINavigationController(rootViewController: BlackListController())
-        let vcGame = UINavigationController(rootViewController: GameViewController())
-        let vcPhotoCollection = UINavigationController(rootViewController: PhotoViewController())
         let vcProfile = UINavigationController(rootViewController:ProfileController())
         
         vcBlackList.tabBarItem = .init(title: "BlackList", image: .checkmark, tag: 1)
-        vcGame.tabBarItem = .init(title: "Game", image: .remove, tag: 2)
-        vcPhotoCollection.tabBarItem = .init(title: "Photo", image: .actions, tag: 3)
         vcProfile.tabBarItem = .init(title: "Profile", image: .add, tag: 4)
         
-        //self.setViewControllers([vcBlackList, vcGame, vcPhotoCollection, vcProfile], animated: true)
-        self.setViewControllers([vcBlackList], animated: true)
+        self.setViewControllers([vcBlackList, vcProfile], animated: true)
     }
 }
