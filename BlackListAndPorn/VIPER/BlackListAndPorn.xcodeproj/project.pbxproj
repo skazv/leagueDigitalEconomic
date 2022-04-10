@@ -175,11 +175,11 @@
 		8E544C4327EA8F2500D87537 /* BlackListAndPorn */ = {
 			isa = PBXGroup;
 			children = (
-				8EA1732027F6E8CD001B76F5 /* Helpers */,
 				8E544C4427EA8F2500D87537 /* AppDelegate.swift */,
 				8E544C4627EA8F2500D87537 /* SceneDelegate.swift */,
 				8E544C4827EA8F2500D87537 /* TabBarController.swift */,
 				8EA1F77A2800B62A003CE586 /* VIPER */,
+				8EA1732027F6E8CD001B76F5 /* Helpers */,
 				8EA3034C280372C500BA450B /* OldDeleted */,
 				8E544C4D27EA8F2700D87537 /* Assets.xcassets */,
 				8E544C4F27EA8F2700D87537 /* LaunchScreen.storyboard */,
